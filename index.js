@@ -27,6 +27,9 @@ const inventory = [
  */
 function logNames(items) {
   // TODO: use `forEach`
+  items.forEach(item => {
+    console.log(item.name);
+  });
 }
 
 /**
@@ -35,7 +38,9 @@ function logNames(items) {
  */
 function getUppercaseNames(items) {
   // TODO: use `map`
+  return items.map((item) => item.name.toUpperCase());
 }
+console.log(getUppercaseNames(inventory));
 
 /**
  * @param {Item[]} items - array of items
@@ -44,7 +49,11 @@ function getUppercaseNames(items) {
  */
 function getItemById(items, id) {
   // TODO: use `find`
+  let foundItem = items.find((item) => item.id === id);
+  return foundItem;
+
 }
+console.log(getItemById(inventory, 2))
 
 /**
  * @param {Item[]} items - array of items
@@ -53,7 +62,13 @@ function getItemById(items, id) {
  */
 function getItemPriceByName(items, name) {
   // TODO: use a loop!
+  for(let i = 0; i < items.length; ++i) {
+    if (items[i].name === name)
+      return items[i].price;
+  }
+  return undefined;//if not found
 }
+console.log(getItemPriceByName(inventory));
 
 /**
  * @param {Item[]} items - array of items
@@ -62,7 +77,10 @@ function getItemPriceByName(items, name) {
  */
 function getItemsByCategory(items, category) {
   // TODO: use `filter`
+  let filterItem = items.filter((item) => item.category === category);
+  return filterItem
 }
+console.log(getItemsByCategory(inventory));
 
 /**
  * @param {Item[]} items - array of items
@@ -70,7 +88,13 @@ function getItemsByCategory(items, category) {
  */
 function countItems(items) {
   // TODO: use `reduce`
+  let totalQuantity = items.reduce(function(sum, item) {
+    return sum + item.quantity;
+  }, 0);
+  return totalQuantity;
 }
+console.log(countItems(inventory));
+
 
 /**
  * @param {Item[]} items - array of items
@@ -78,7 +102,12 @@ function countItems(items) {
  */
 function getTotalPrice(items) {
   // TODO: use `reduce`
+  let totalPrice = items.reduce(function(sum, item) {
+    return sum + item.price;
+  }, 0);
+  return totalPrice;
 }
+console.log(getTotalPrice(inventory));
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
 
